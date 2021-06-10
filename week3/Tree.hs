@@ -18,3 +18,8 @@ addNewMax :: Tree -> Tree
 addNewMax Leaf = Node 0 Leaf Leaf
 addNewMax (Node x l Leaf) = Node x l (Node (x+1) Leaf Leaf)
 addNewMax (Node x l r)    = Node x l (addNewMax r)
+
+-- Returns a sorted list of values, if it's a binary search tree
+treeToList :: Tree -> [Int]
+treeToList Leaf = []
+treeToList (Node x l r) = treeToList l ++ [x] ++ treeToList r
