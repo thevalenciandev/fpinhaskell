@@ -23,3 +23,9 @@ addNewMax (Node x l r)    = Node x l (addNewMax r)
 treeToList :: Tree -> [Int]
 treeToList Leaf = []
 treeToList (Node x l r) = treeToList l ++ [x] ++ treeToList r
+
+treeInsert :: Int -> Tree -> Tree
+treeInsert x Leaf         = Node x Leaf Leaf
+treeInsert x (Node y l r)
+    | x < y     = Node y (treeInsert x l) r
+    | otherwise = Node y l (treeInsert x r)
